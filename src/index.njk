@@ -1,0 +1,86 @@
+---
+layout: layouts/base.njk
+title: Security research and field notes
+description: I publish independent security research, threat reports, CVE work and practical field notes.
+---
+{% block content %}
+<section class="hero">
+  <div class="shell hero-grid">
+    <div>
+      <p class="kicker">Sam Dalgleish / CyberFrenchie</p>
+      <h1>Security work,<span>properly evidenced.</span></h1>
+      <p class="hero-copy">I publish threat research, vulnerability work and practical field notes from Scotland. I show what I observed, what I inferred and where the limits are.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="/reports/">Read the reports</a>
+        <a class="button button-secondary" href="/about/">About me</a>
+      </div>
+    </div>
+    <div class="hero-facts" aria-label="Research profile">
+      <div class="fact"><span>Published CVE</span><strong>CVE-2025-9548</strong></div>
+      <div class="fact"><span>Published advisory</span><strong>GHSA-2hc8-w9rq-wff2</strong></div>
+      <div class="fact"><span>Focus</span><strong>Threat research and defensive engineering</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section-head">
+      <div>
+        <span class="section-label">Latest writing</span>
+        <h2>From the notebook</h2>
+      </div>
+      <p>Finished reports sit beside shorter technical notes. Each piece says what sort of evidence it uses.</p>
+    </div>
+    <div class="entry-grid">
+      {% for item in collections.writing | limit(3) %}
+        {% include "entry-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="shell feature">
+    <div class="feature-visual" aria-hidden="true">
+      <div class="signal"></div>
+      <span class="feature-number">VENDOR-CONFIRMED / RESPONSIBLY DISCLOSED</span>
+    </div>
+    <div class="feature-copy">
+      <span class="section-label">Published research</span>
+      <h2>Two findings, two vendor fixes</h2>
+      <p>The current public work covers a denial-of-service flaw in Lenovo's Windows power management driver and unsafe release entitlements in balenaEtcher for macOS. Both findings were tested locally, reported to the vendor and fixed before publication.</p>
+      <div class="metric-row">
+        <div class="metric"><strong>1</strong><span>Published CVE</span></div>
+        <div class="metric"><strong>1</strong><span>GitHub advisory</span></div>
+        <div class="metric"><strong>2</strong><span>Patched products</span></div>
+      </div>
+      <a class="button button-primary" href="/research/cve-2025-9548/">Read the Lenovo research</a>
+      <a class="button button-secondary" href="/research/balena-etcher-get-task-allow/">Read the balenaEtcher research</a>
+    </div>
+  </div>
+</section>
+
+<section class="section cve-strip">
+  <div class="shell cve-panel">
+    <div>
+      <span class="section-label">Live public data</span>
+      <h2>CVE records without stale copy</h2>
+      <p>The CVE area reads current records from the official CVE Program and NVD APIs. I use it to keep a plain-language record of my own published vulnerability work.</p>
+      <a class="text-link" href="/cves/">Open CVE data</a>
+    </div>
+    <div class="live-card">
+      <div class="live-card-head">
+        <h3>CVE-2025-9548</h3>
+        <span class="live-dot">Official record</span>
+      </div>
+      <div class="live-grid">
+        <div class="live-value"><span>Vendor</span><strong>Lenovo</strong></div>
+        <div class="live-value"><span>Impact</span><strong>Denial of service</strong></div>
+        <div class="live-value"><span>Severity</span><strong>Medium</strong></div>
+        <div class="live-value"><span>Reporter</span><strong>Sam Dalgleish</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

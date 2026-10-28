@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+title: Page not found
+permalink: /404.html
+excludeFromSitemap: true
+---
+{% block content %}
+<section class="page-head">
+  <div class="shell narrow">
+    <p class="eyebrow">404</p>
+    <h1>That page is not here.</h1>
+    <p class="lede">The old report archive was retired. Start from the new writing index or use the live CVE page.</p>
+  </div>
+</section>
+<div class="shell narrow prose">
+  <p><a href="/writing/">Browse the writing</a> or <a href="/cves/">open CVE data</a>.</p>
+</div>
+{% endblock %}

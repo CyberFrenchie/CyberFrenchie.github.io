@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+title: CVE data
+description: Live CVE and NVD records alongside my published vulnerability research.
+permalink: /cves/index.html
+---
+{% block head %}<script src="/assets/js/cve-live.js" defer></script>{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="shell narrow">
+    <p class="eyebrow">Official public records</p>
+    <h1>CVE data</h1>
+    <p class="lede">You can look up a CVE directly from the official CVE Program and NVD APIs. I keep live data separate from my own published research.</p>
+  </div>
+</section>
+
+<div class="shell cve-tools">
+  <section class="tool-card" aria-labelledby="lookup-title">
+    <h2 id="lookup-title">CVE lookup</h2>
+    <p>Enter a CVE identifier. The result is fetched when you submit the form and is not stored by this site.</p>
+    <form class="lookup-form" id="cve-form">
+      <label class="visually-hidden" for="cve-id">CVE identifier</label>
+      <input id="cve-id" name="cve" value="CVE-2025-9548" pattern="CVE-[0-9]{4}-[0-9]{4,}" autocomplete="off" required>
+      <button type="submit">Look up</button>
+    </form>
+    <p class="api-status" id="cve-status" aria-live="polite">Ready to query the official APIs.</p>
+    <div class="cve-result" id="cve-result">
+      <h3>CVE-2025-9548</h3>
+      <p>Lenovo Power Management Driver null pointer dereference. The fixed version and current record details will appear here after the live query.</p>
+    </div>
+  </section>
+
+  <section class="tool-card" aria-labelledby="recent-title">
+    <h2 id="recent-title">Recently published critical CVEs</h2>
+    <p>This panel requests up to six CVSS v3 Critical records published during the previous seven days. CVSS is severity, not a measure of your organisation's risk.</p>
+    <p class="api-status" id="recent-status" aria-live="polite">Loading current NVD data.</p>
+    <div class="recent-cves" id="recent-cves"></div>
+  </section>
+</div>
+
+<section class="section section-alt">
+  <div class="shell">
+    <div class="section-head">
+      <div>
+        <span class="section-label">My published work</span>
+        <h2>Vulnerability research</h2>
+      </div>
+      <p>These pages describe work I performed and reported myself. They are not generated from a feed.</p>
+    </div>
+    <div class="entry-grid">
+      {% for item in collections.cveResearch %}
+        {% include "entry-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

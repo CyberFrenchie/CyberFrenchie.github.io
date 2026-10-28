@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="{{ site.language }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ description or site.description }}">
+    <meta name="author" content="{{ site.name }}">
+    <meta name="theme-color" content="#111820">
+    <meta property="og:type" content="{% if pageType == 'article' %}article{% else %}website{% endif %}">
+    <meta property="og:title" content="{{ title or site.title }}">
+    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
+    <link rel="stylesheet" href="/assets/css/site.css">
+    <script src="/assets/js/site.js" defer></script>
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="identity" href="/" aria-label="Sam Dalgleish home">
+          <span class="identity-mark" aria-hidden="true">SD</span>
+          <span>
+            <strong>Sam Dalgleish</strong>
+            <small>CyberFrenchie</small>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+          <a href="/writing/">Writing</a>
+          <a href="/reports/">Reports</a>
+          <a href="/cves/">CVE data</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      {% block content %}{{ content | safe }}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div>
+          <strong>Sam Dalgleish</strong>
+          <p>Independent security research from Scotland.</p>
+        </div>
+        <div class="footer-links">
+          <a href="{{ site.github }}">GitHub</a>
+          <a href="{{ site.linkedin }}">LinkedIn</a>
+          <a href="/feed.xml">RSS</a>
+          <a href="/privacy/">Privacy</a>
+        </div>
+        <p class="footer-note">No tracking, no advertising and no sponsored findings.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+title: Writing
+description: My security research, field notes and publication updates.
+permalink: /writing/index.html
+---
+{% block content %}
+<section class="page-head">
+  <div class="shell narrow">
+    <p class="eyebrow">Research notebook</p>
+    <h1>Writing</h1>
+    <p class="lede">Finished vulnerability research, formal reports and shorter notes from work that is safe to discuss publicly.</p>
+  </div>
+</section>
+<div class="shell archive-list">
+  {% for item in collections.writing %}
+  <article class="archive-item">
+    <time datetime="{{ item.date | isoDate }}">{{ item.date | readableDate }}</time>
+    <h2><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
+    <span class="archive-kind">{{ item.data.kind or "Field note" }}</span>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

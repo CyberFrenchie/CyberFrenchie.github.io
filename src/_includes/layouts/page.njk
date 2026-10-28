@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+---
+{% block content %}
+<section class="page-head">
+  <div class="shell narrow">
+    {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+    <h1>{{ title }}</h1>
+    {% if description %}<p class="lede">{{ description }}</p>{% endif %}
+  </div>
+</section>
+<article class="shell narrow prose">
+  {{ content | safe }}
+</article>
+{% endblock %}

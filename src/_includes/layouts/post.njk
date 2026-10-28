@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+---
+{% block content %}
+<article>
+  <header class="article-head">
+    <div class="shell narrow">
+      <p class="eyebrow">{{ kind or "Field note" }}</p>
+      <h1>{{ title }}</h1>
+      {% if description %}<p class="lede">{{ description }}</p>{% endif %}
+      <div class="article-meta">
+        <span>{{ date | readableDate }}</span>
+        {% if lastReviewed %}<span>Reviewed {{ lastReviewed | readableDate }}</span>{% endif %}
+        {% if reportId %}<span>{{ reportId }}</span>{% endif %}
+        {% if classification %}<span>{{ classification }}</span>{% endif %}
+      </div>
+    </div>
+  </header>
+  <div class="shell article-grid">
+    <div class="prose">
+      {% if status %}
+      <aside class="status-note">
+        <strong>Current status</strong>
+        <p>{{ status }}</p>
+      </aside>
+      {% endif %}
+      {{ content | safe }}
+    </div>
+    <aside class="article-side" aria-label="Article details">
+      <div class="side-card">
+        <span class="side-label">Written by</span>
+        <strong>Sam Dalgleish</strong>
+        <span>CyberFrenchie</span>
+      </div>
+      <div class="side-card">
+        <span class="side-label">Evidence standard</span>
+        <p>Claims are separated from observations. Confidence and limitations are stated where they matter.</p>
+      </div>
+      <a class="text-link" href="/writing/">All writing</a>
+    </aside>
+  </div>
+</article>
+{% endblock %}

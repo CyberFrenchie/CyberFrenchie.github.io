@@ -1,0 +1,22 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.name }} | Security research and field notes</title>
+  <link href="{{ site.url }}/feed.xml" rel="self"/>
+  <link href="{{ site.url }}/"/>
+  <updated>{{ collections.writing[0].date | isoDate }}</updated>
+  <id>{{ site.url }}/</id>
+  <author><name>{{ site.name }}</name></author>
+  {% for item in collections.writing | limit(20) %}
+  <entry>
+    <title>{{ item.data.title }}</title>
+    <link href="{{ site.url }}{{ item.url }}"/>
+    <id>{{ site.url }}{{ item.url }}</id>
+    <updated>{{ item.date | isoDate }}</updated>
+    <summary>{{ item.data.description }}</summary>
+  </entry>
+  {% endfor %}
+</feed>

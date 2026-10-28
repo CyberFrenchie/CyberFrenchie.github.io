@@ -1,0 +1,9 @@
+<article class="entry-card">
+  <div class="entry-meta">
+    <span>{{ item.data.kind or "Field note" }}</span>
+    <time datetime="{{ item.date | isoDate }}">{{ item.date | readableDate }}</time>
+  </div>
+  <h3><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
+  {% if item.data.description %}<p>{{ item.data.description }}</p>{% endif %}
+  <a class="text-link" href="{{ item.url }}">Read the piece</a>
+</article>

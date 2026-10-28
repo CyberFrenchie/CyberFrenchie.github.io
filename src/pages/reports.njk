@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+title: Reports
+description: My formal, evidence-led security reports.
+permalink: /reports/index.html
+---
+{% block content %}
+<section class="page-head">
+  <div class="shell narrow">
+    <p class="eyebrow">Finished intelligence</p>
+    <h1>Reports</h1>
+    <p class="lede">This is where I publish long-form investigations. I label historical indicators and keep the limitations visible.</p>
+  </div>
+</section>
+<div class="shell narrow prose">
+  {% if collections.reports.length %}
+    {% for item in collections.reports %}
+      <h2><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
+      <p>{{ item.data.description }}</p>
+    {% endfor %}
+  {% else %}
+    <div class="status-note">
+      <strong>No public reports yet</strong>
+      <p>I am holding the first report while I wait for an external publication decision. I have not republished anything from the previous site without reviewing the evidence again.</p>
+    </div>
+    <p>My published vulnerability research is in the <a href="/writing/">writing archive</a>. I will use this section for original threat research, incident studies and defensive analysis.</p>
+  {% endif %}
+</div>
+{% endblock %}
